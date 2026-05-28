@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GlassCompany.io — Premium Architectural Glass for California Construction</title>
+<meta name="description" content="Premium architectural glass fabrication and installation for contractors across California. Glass railings, shower doors, office partitions — production-ready in as little as 3 working days.">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#1e293b;background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ── TYPOGRAPHY ── */
+h1,h2,h3{font-weight:800;letter-spacing:-0.02em;line-height:1.15}
+h1{font-size:clamp(2rem,5vw,3.5rem)}
+h2{font-size:clamp(1.75rem,4vw,2.5rem)}
+h3{font-size:clamp(1.1rem,2.5vw,1.35rem)}
+.section-label{display:inline-block;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#0891b2;margin-bottom:0.5rem}
+
+/* ── LAYOUT ── */
+.container{max-width:1200px;margin:0 auto;padding:0 2rem}
+section{padding:5rem 0}
+.section-header{text-align:center;max-width:700px;margin:0 auto 3rem}
+.section-header h2{margin-bottom:0.75rem}
+.section-header p{font-size:1.1rem;color:#64748b}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,23,42,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.06);transition:background 0.3s}
+.nav .container{display:flex;align-items:center;justify-content:space-between;height:70px}
+.nav-logo{font-weight:800;font-size:1.25rem;color:#fff;letter-spacing:-0.01em}
+.nav-logo span{color:#0891b2}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:#cbd5e1;font-size:0.9rem;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:#0891b2;color:#fff;padding:0.5rem 1.25rem;border-radius:6px;font-weight:600;font-size:0.9rem;transition:background 0.2s}
+.nav-cta:hover{background:#0ea5e9}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:26px;height:2.5px;background:#fff;border-radius:2px;transition:0.3s}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* ── HERO ── */
+.hero{background:#0f172a;color:#fff;padding:8rem 0 5rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(8,145,178,0.15),transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-30%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(8,145,178,0.08),transparent 70%);pointer-events:none}
+.hero .container{position:relative;z-index:1}
+.hero-content{max-width:700px}
+.hero h1{margin-bottom:1.25rem}
+.hero-subhead{font-size:1.15rem;color:#94a3b8;margin-bottom:2rem;max-width:560px;line-height:1.7}
+.hero-cta{display:inline-block;background:#0891b2;color:#fff;padding:0.9rem 2rem;border-radius:8px;font-weight:700;font-size:1rem;transition:background 0.2s,transform 0.2s}
+.hero-cta:hover{background:#0ea5e9;transform:translateY(-1px)}
+.hero-badges{display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:2.5rem}
+.hero-badge{display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:#94a3b8}
+.hero-badge .check{color:#0ea5e9;font-weight:700;font-size:1.1rem}
+
+/* ── PRODUCT CARDS ── */
+.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.product-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:2rem 1.5rem;transition:transform 0.2s,box-shadow 0.2s}
+.product-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,0.06)}
+.product-icon{font-size:2.5rem;margin-bottom:1rem}
+.product-card h3{margin-bottom:0.5rem}
+.product-card p{color:#64748b;font-size:0.95rem;margin-bottom:1rem}
+.product-link{font-weight:600;font-size:0.9rem;color:#0891b2;display:inline-flex;align-items:center;gap:0.25rem;transition:color 0.2s}
+.product-link:hover{color:#0ea5e9}
+
+/* ── DIFFERENTIATORS ── */
+.diff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.diff-card{text-align:center;padding:2rem 1.25rem}
+.diff-icon{width:56px;height:56px;background:#e0f2fe;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.6rem}
+.diff-card h3{font-size:1.1rem;margin-bottom:0.5rem}
+.diff-card p{color:#64748b;font-size:0.9rem}
+
+/* ── HOW IT WORKS ── */
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;position:relative}
+.step-card{text-align:center;padding:1.5rem;position:relative}
+.step-number{width:48px;height:48px;background:#0891b2;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.25rem;margin:0 auto 1rem}
+.step-card h3{margin-bottom:0.5rem}
+.step-card p{color:#64748b;font-size:0.9rem}
+.step-connector{display:none}
+
+/* ── PRICING ── */
+.pricing-block{max-width:700px;margin:0 auto;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:2.5rem}
+.pricing-example{font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#64748b;margin-bottom:1.5rem}
+.pricing-rows{display:flex;flex-direction:column;gap:1rem}
+.pricing-row{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 0;border-bottom:1px solid #e2e8f0}
+.pricing-row:last-child{border-bottom:none}
+.pricing-label{font-weight:600}
+.pricing-standard{color:#64748b}
+.pricing-ours{color:#0891b2;font-weight:700;font-size:1.1rem}
+.pricing-savings{background:#d1fae5;color:#065f46;padding:0.25rem 0.75rem;border-radius:20px;font-weight:700;font-size:0.85rem}
+
+/* ── COMPARISON TABLE ── */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.comparison-table{width:100%;border-collapse:collapse;min-width:600px}
+.comparison-table th{background:#0f172a;color:#fff;padding:1rem 1.25rem;text-align:left;font-weight:600;font-size:0.9rem}
+.comparison-table th:first-child{border-radius:8px 0 0 0}
+.comparison-table th:last-child{border-radius:0 8px 0 0}
+.comparison-table td{padding:1rem 1.25rem;border-bottom:1px solid #e2e8f0;font-size:0.95rem}
+.comparison-table tr:last-child td:last-child{border-radius:0 0 8px 0}
+.comparison-table tr:last-child td:first-child{border-radius:0 0 0 8px}
+.comparison-table .check{color:#0891b2;font-weight:700}
+.comparison-table .cross{color:#94a3b8}
+.comparison-table tr.highlight{background:#f0fdfa}
+
+/* ── TECH SPECS ── */
+.specs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.spec-card{background:#f8fafc;border-radius:10px;padding:2rem;border:1px solid #e2e8f0}
+.spec-card h3{font-size:1.1rem;margin-bottom:0.75rem;color:#0f172a}
+.spec-card p{color:#64748b;font-size:0.95rem;line-height:1.7}
+.spec-highlight{display:inline-block;background:#e0f2fe;color:#0c4a6e;padding:0.15rem 0.6rem;border-radius:4px;font-weight:700;font-size:0.85rem;margin-right:0.25rem}
+
+/* ── GALLERY ── */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.gallery-item{aspect-ratio:4/3;background:#e2e8f0;border-radius:8px;display:flex;align-items:flex-end;padding:1rem;position:relative;overflow:hidden}
+.gallery-item::before{content:'';position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(0,0,0,0.5));z-index:1}
+.gallery-label{position:relative;z-index:2;color:#fff;font-size:0.85rem;font-weight:600}
+.gallery-cta{text-align:center;margin-top:2rem}
+
+/* ── TRUST ── */
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;max-width:700px;margin:0 auto}
+.trust-item{display:flex;align-items:center;gap:0.5rem;font-weight:600;font-size:0.95rem;padding:0.5rem 0}
+.trust-item .check{color:#0891b2;font-weight:700}
+
+/* ── FAQ ── */
+.faq-list{max-width:700px;margin:0 auto}
+.faq-item{border-bottom:1px solid #e2e8f0}
+.faq-q{width:100%;background:none;border:none;text-align:left;padding:1.25rem 0;font-weight:600;font-size:1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:#1e293b}
+.faq-q::after{content:'+';font-size:1.3rem;color:#0891b2;font-weight:300;transition:transform 0.3s}
+.faq-item.open .faq-q::after{content:'−';transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:1.25rem}
+.faq-a p{color:#64748b;font-size:0.95rem}
+
+/* ── CONTACT ── */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.contact-form{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:2.5rem}
+.form-group{margin-bottom:1.25rem}
+.form-group label{display:block;font-weight:600;font-size:0.9rem;margin-bottom:0.4rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:0.75rem 1rem;border:1px solid #e2e8f0;border-radius:6px;font-size:0.95rem;font-family:inherit;background:#fff;transition:border-color 0.2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:#0891b2;box-shadow:0 0 0 3px rgba(8,145,178,0.1)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-submit{width:100%;background:#0891b2;color:#fff;border:none;padding:0.9rem;border-radius:6px;font-weight:700;font-size:1rem;cursor:pointer;transition:background 0.2s}
+.form-submit:hover{background:#0ea5e9}
+.form-error{color:#dc2626;font-size:0.8rem;margin-top:0.25rem;display:none}
+.form-error.visible{display:block}
+.thank-you{display:none;text-align:center;padding:3rem 1rem}
+.thank-you.visible{display:block}
+.thank-you-icon{font-size:3rem;margin-bottom:1rem}
+.thank-you h3{margin-bottom:0.5rem}
+.thank-you p{color:#64748b}
+.guarantee{text-align:center;margin-top:1rem;font-size:0.9rem;color:#64748b;font-style:italic}
+.contact-info{padding-top:1rem}
+.contact-info h3{margin-bottom:1rem}
+.contact-info p{color:#64748b;margin-bottom:0.75rem}
+
+/* ── FOOTER ── */
+.footer{background:#0f172a;color:#94a3b8;padding:3rem 0 2rem;font-size:0.9rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}
+.footer-brand .nav-logo{margin-bottom:0.75rem;display:inline-block}
+.footer-tagline{line-height:1.6}
+.footer h4{color:#fff;font-weight:600;margin-bottom:1rem;font-size:0.95rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
+.footer-links a{color:#64748b;transition:color 0.2s;font-size:0.9rem}
+.footer-links a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);margin-top:2.5rem;padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:0.85rem}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .products-grid,.diff-grid,.steps-grid{grid-template-columns:repeat(2,1fr)}
+  .specs-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-wrap{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:70px;left:0;right:0;background:rgba(15,23,42,0.98);backdrop-filter:blur(12px);flex-direction:column;padding:1.5rem 2rem;gap:1rem;border-bottom:1px solid rgba(255,255,255,0.06)}
+  .nav-links.open{display:flex}
+  .hamburger{display:flex}
+  .products-grid,.diff-grid,.steps-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .trust-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  section{padding:3rem 0}
+  .container{padding:0 1.25rem}
+  .pricing-block{padding:1.5rem}
+}
+@media(max-width:480px){
+  .hero-badges{flex-direction:column;gap:0.75rem}
+  .trust-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <a href="#hero" class="nav-logo">Glass<span>Company</span>.io</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#products">Products</a></li>
+      <li><a href="#why-us">Why Us</a></li>
+      <li><a href="#how-it-works">Process</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>Premium Glass.<br>Fast Production.<br>Professional Installation.</h1>
+      <p class="hero-subhead">We fabricate and install glass railings, shower doors, and office partitions for contractors across California — production-ready in as little as 3 working days.</p>
+      <a href="#contact" class="hero-cta">Get a Quote</a>
+      <div class="hero-badges">
+        <div class="hero-badge"><span class="check">✓</span> 3–7 Day Turnaround</div>
+        <div class="hero-badge"><span class="check">✓</span> Factory-Direct Pricing</div>
+        <div class="hero-badge"><span class="check">✓</span> Full-Service Installation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PRODUCTS ═══════════════ -->
+<section id="products">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">What We Build</span>
+      <h2>Architectural Glass Products</h2>
+      <p>Fabricated in California for crews who need it done right, on time, and on budget.</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-icon">🚿</div>
+        <h3>Shower Doors</h3>
+        <p>Frameless, semi-frameless, and custom enclosures — cut to spec, hardware included.</p>
+        <a href="#contact" class="product-link">Learn More →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🏗️</div>
+        <h3>Glass Railings</h3>
+        <p>Balcony, deck, and stair railings. Frameless and standoff systems for any elevation.</p>
+        <a href="#contact" class="product-link">Learn More →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🪜</div>
+        <h3>Glass Stair Railings</h3>
+        <p>Code-compliant interior and exterior systems. Passes inspection, every time.</p>
+        <a href="#contact" class="product-link">Learn More →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">🏢</div>
+        <h3>Office Glass Partitions</h3>
+        <p>Commercial, retail, and TI projects. Floor-to-ceiling or freestanding solutions.</p>
+        <a href="#contact" class="product-link">Learn More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ DIFFERENTIATORS ═══════════════ -->
+<section id="why-us" style="background:#f8fafc">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Why GlassCompany.io</span>
+      <h2>Built Different</h2>
+      <p>Four reasons contractors and architects choose us over the other guys.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-icon">📦</div>
+        <h3>Factory-Direct Value</h3>
+        <p>No middleman. Premium glass and hardware sourced direct — delivered at contractor-friendly prices.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">🛡️</div>
+        <h3>Safety &amp; Materials</h3>
+        <p>Tempered safety glass, SS 304/316 marine-grade hardware, meets IBC/CRC building codes.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">⚡</div>
+        <h3>Speed &amp; Efficiency</h3>
+        <p>3–7 business day production. Competitors need 6–8 weeks. We don't.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">🔧</div>
+        <h3>Full-Service Installation</h3>
+        <p>We don't just deliver glass. Our crew installs, inspects, and guarantees the work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ HOW IT WORKS ═══════════════ -->
+<section id="how-it-works">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Process</span>
+      <h2>How It Works</h2>
+      <p>Four steps from quote to sign-off. No surprises, no scope creep.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3>Request a Quote</h3>
+        <p>Send measurements, photos, or plans. We respond within 24 hours with pricing.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3>Verify &amp; Finalize</h3>
+        <p>Confirm specs, pricing, and timeline. Everything locked before we cut glass.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3>Production &amp; Scheduling</h3>
+        <p>Glass fabricated and install scheduled around your timeline — not ours.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <h3>Quality-Verified Delivery</h3>
+        <p>Professional install, inspection, and sign-off. Done right, guaranteed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PRICING ═══════════════ -->
+<section id="pricing" style="background:#f8fafc">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Pricing</span>
+      <h2>What You Save</h2>
+      <p>Factory-direct means no retail markup. Here's what that looks like on a real project.</p>
+    </div>
+    <div class="pricing-block">
+      <div class="pricing-example">Example Project</div>
+      <div class="pricing-rows">
+        <div class="pricing-row">
+          <span class="pricing-label">20ft Frameless Glass Balcony Railing</span>
+        </div>
+        <div class="pricing-row">
+          <span>Standard Contractor</span>
+          <span class="pricing-standard">$5,500 – $7,000</span>
+        </div>
+        <div class="pricing-row">
+          <span>GlassCompany.io</span>
+          <span class="pricing-ours">$3,800 – $4,500</span>
+        </div>
+        <div class="pricing-row">
+          <span>Your Savings</span>
+          <span class="pricing-savings">~30%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── COMPARISON TABLE ── -->
+    <div class="section-header" style="margin-top:4rem">
+      <h2>Why Teams Choose GlassCompany.io</h2>
+    </div>
+    <div class="table-wrap">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>GlassCompany.io</th>
+            <th>General Contractors</th>
+            <th>DIY / Big Box</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td><strong>Turnaround Time</strong></td>
+            <td class="check">✓ 3–7 Days</td>
+            <td>2–4 Weeks</td>
+            <td class="cross">✗ 6–12 Weeks</td>
+          </tr>
+          <tr>
+            <td><strong>Pricing</strong></td>
+            <td class="check">✓ Factory-Direct</td>
+            <td>Wholesale + Markup</td>
+            <td class="cross">✗ Retail + Retail</td>
+          </tr>
+          <tr class="highlight">
+            <td><strong>Installation</strong></td>
+            <td class="check">✓ Full-Service Crew</td>
+            <td>Subcontracted</td>
+            <td class="cross">✗ DIY or Not Included</td>
+          </tr>
+          <tr>
+            <td><strong>Customization</strong></td>
+            <td class="check">✓ Any Spec</td>
+            <td>Limited Options</td>
+            <td class="cross">✗ Stock Sizes Only</td>
+          </tr>
+          <tr class="highlight">
+            <td><strong>Warranty</strong></td>
+            <td class="check">✓ Product + Install</td>
+            <td>Product Only</td>
+            <td class="cross">✗ Limited / None</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TECHNICAL SPECS ═══════════════ -->
+<section id="specs">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Materials &amp; Quality</span>
+      <h2>Engineered for Safety.<br>Built for Views.</h2>
+      <p>The materials behind every installation — specified for architects, trusted by builders.</p>
+    </div>
+    <div class="specs-grid">
+      <div class="spec-card">
+        <h3>🪟 Tempered Safety Glass</h3>
+        <p><span class="spec-highlight">½" (12mm)</span> standard — 4x stronger than regular glass. <span class="spec-highlight">SentryGlas®</span> ionoplast interlayer available for high-elevation and structural applications. Exceeds IBC/CRC safety requirements.</p>
+      </div>
+      <div class="spec-card">
+        <h3>⚓ Marine-Grade Hardware</h3>
+        <p><span class="spec-highlight">AISI 316</span> stainless steel hardware — corrosion-resistant, maintenance-free. Suitable for oceanfront, poolside, and coastal installations. Also available in 304-grade for interior applications.</p>
+      </div>
+      <div class="spec-card">
+        <h3>💎 Low-Iron Starphire® Option</h3>
+        <p>Removes the green tint found in standard glass. True-to-color transparency for ocean and view properties. <span class="spec-highlight">Starphire®</span> by Vitro — the clearest architectural glass available.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ GALLERY ═══════════════ -->
+<section id="gallery" style="background:#f8fafc">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Our Work</span>
+      <h2>Project Gallery</h2>
+      <p>A selection of recent California installations.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><span class="gallery-label">Balcony Railing — Newport Beach</span></div>
+      <div class="gallery-item"><span class="gallery-label">Frameless Shower — Santa Monica</span></div>
+      <div class="gallery-item"><span class="gallery-label">Office Partition — San Francisco</span></div>
+      <div class="gallery-item"><span class="gallery-label">Stair Railing — Palo Alto</span></div>
+      <div class="gallery-item"><span class="gallery-label">Deck Railing — Laguna Beach</span></div>
+      <div class="gallery-item"><span class="gallery-label">Commercial TI — Irvine</span></div>
+      <div class="gallery-item"><span class="gallery-label">Pool Enclosure — Malibu</span></div>
+      <div class="gallery-item"><span class="gallery-label">Custom Enclosure — Beverly Hills</span></div>
+    </div>
+    <div class="gallery-cta">
+      <a href="#contact" class="hero-cta" style="background:#0f172a">View More Projects</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TRUST ═══════════════ -->
+<section id="trust">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Trusted By</span>
+      <h2>Who We Work With</h2>
+      <p>We serve the crews and firms building California.</p>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-item"><span class="check">✓</span> General Contractors</div>
+      <div class="trust-item"><span class="check">✓</span> Commercial Builders</div>
+      <div class="trust-item"><span class="check">✓</span> Retail Rollout Teams</div>
+      <div class="trust-item"><span class="check">✓</span> Property Developers</div>
+      <div class="trust-item"><span class="check">✓</span> Tenant Improvement Crews</div>
+      <div class="trust-item"><span class="check">✓</span> Multi-Site Project Managers</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FAQ ═══════════════ -->
+<section id="faq" style="background:#f8fafc">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">FAQ</span>
+      <h2>Quick Answers</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">What areas do you serve?</button>
+        <div class="faq-a"><p>Southern and Northern California — from San Diego to the Bay Area and everywhere in between. If you're building in California, we're there.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What's your typical turnaround time?</button>
+        <div class="faq-a"><p>3–7 business days for production. Most competitors need 6–8 weeks. We move fast because we control fabrication in-house.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do you handle permits?</button>
+        <div class="faq-a"><p>We provide detailed spec sheets and engineering documentation for your permit package. Your GC or architect submits — we make sure everything passes.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What warranty do you offer?</button>
+        <div class="faq-a"><p>Full product and installation warranty. If something's not right, we fix it. Our reputation depends on every install.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What glass types do you use?</button>
+        <div class="faq-a"><p>Tempered safety glass (½" / 12mm) is standard. Starphire® low-iron glass is available as an upgrade — ideal for oceanfront and view properties where clarity matters.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do you do site measurements?</button>
+        <div class="faq-a"><p>Yes — included before fabrication. We measure on-site to ensure a perfect fit. No surprises on install day.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Get Started</span>
+      <h2>Ready to Start?</h2>
+      <p>Tell us about your project and get a quote with transparent pricing and realistic timelines.</p>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-form" id="contactForm">
+        <form id="quoteForm" novalidate>
+          <div class="form-group">
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+            <div class="form-error" id="nameError">Please enter your name.</div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" placeholder="you@company.com" required>
+            <div class="form-error" id="emailError">Please enter a valid email address.</div>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+          </div>
+          <div class="form-group">
+            <label for="projectType">Project Type *</label>
+            <select id="projectType" name="projectType" required>
+              <option value="">Select project type</option>
+              <option value="shower">Shower Door</option>
+              <option value="railing">Glass Railing</option>
+              <option value="stair">Stair Railing</option>
+              <option value="partition">Office Partition</option>
+              <option value="other">Other</option>
+            </select>
+            <div class="form-error" id="typeError">Please select a project type.</div>
+          </div>
+          <div class="form-group">
+            <label for="description">Project Description *</label>
+            <textarea id="description" name="description" placeholder="Tell us about your project — dimensions, location, timeline, anything that helps us quote accurately." required></textarea>
+            <div class="form-error" id="descError">Please describe your project.</div>
+          </div>
+          <button type="submit" class="form-submit">Get Your Quote</button>
+        </form>
+        <p class="guarantee">If you're not satisfied, we make it right — or you don't pay.</p>
+      </div>
+      <div class="thank-you" id="thankYou">
+        <div class="thank-you-icon">✅</div>
+        <h3>Quote Request Received</h3>
+        <p>We'll review your project and get back to you within 24 hours with a detailed quote. No spam, no pressure — just straight numbers.</p>
+      </div>
+      <div class="contact-info">
+        <h3>Prefer to talk?</h3>
+        <p>📞 Call or text for a quick estimate</p>
+        <p>📧 Email plans, photos, or specs directly</p>
+        <p>We respond within 24 hours — usually same day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">Glass<span>Company</span>.io</div>
+        <p class="footer-tagline">Premium architectural glass for California construction professionals.</p>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul class="footer-links">
+          <li><a href="#products">Shower Doors</a></li>
+          <li><a href="#products">Glass Railings</a></li>
+          <li><a href="#products">Stair Railings</a></li>
+          <li><a href="#products">Office Partitions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul class="footer-links">
+          <li><a href="#why-us">About</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 GlassCompany.io</span>
+      <span>California License # — Serving CA Statewide</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── MOBILE NAV ── */
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click',()=>{
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(link=>{
+  link.addEventListener('click',()=>{
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('open');
+  });
+});
+
+/* ── FAQ ACCORDION ── */
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item = btn.parentElement;
+    const wasOpen = item.classList.contains('open');
+    // close all
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen) item.classList.add('open');
+  });
+});
+
+/* ── EMAILJS INIT ── */
+(function(){
+  emailjs.init({ publicKey: 'h9uy88s5OBJb3P9rT' });
+})();
+
+/* ── FORM VALIDATION + EMAILJS SEND ── */
+const form = document.getElementById('quoteForm');
+const thankYou = document.getElementById('thankYou');
+const contactForm = document.getElementById('contactForm');
+const submitBtn = form.querySelector('.form-submit');
+
+function showError(id){ document.getElementById(id).classList.add('visible'); }
+function hideError(id){ document.getElementById(id).classList.remove('visible'); }
+
+form.addEventListener('submit',function(e){
+  e.preventDefault();
+  let valid = true;
+  const name = document.getElementById('name');
+  const email = document.getElementById('email');
+  const type = document.getElementById('projectType');
+  const desc = document.getElementById('description');
+
+  if(!name.value.trim()){ showError('nameError'); valid=false; } else { hideError('nameError'); }
+  if(!email.value.trim() || !email.checkValidity()){ showError('emailError'); valid=false; } else { hideError('emailError'); }
+  if(!type.value){ showError('typeError'); valid=false; } else { hideError('typeError'); }
+  if(!desc.value.trim()){ showError('descError'); valid=false; } else { hideError('descError'); }
+
+  if(!valid) return;
+
+  /* Send via EmailJS */
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending…';
+
+  emailjs.send('service_95yxi0b', 'template_f46wmo4', {
+    from_name: name.value.trim(),
+    reply_to: email.value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    message: desc.value.trim(),
+    project_type: type.value
+  }).then(function(){
+    contactForm.style.display = 'none';
+    thankYou.classList.add('visible');
+  }).catch(function(err){
+    console.error('EmailJS error:', err);
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Get Your Quote';
+    alert('Sorry, something went wrong. Please try again or email us directly.');
+  });
+});
+
+/* ── SMOOTH SCROLL — close mobile nav on click ── */
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+  anchor.addEventListener('click',function(e){
+    const target = document.querySelector(this.getAttribute('href'));
+    if(target){
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth'});
+    }
+  });
+});
+</script>
+
+</body>
+</html>
